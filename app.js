@@ -31,7 +31,7 @@ const item2 = new Item({
     name: "Hit the + button to add a new item"
 });
 
-const defaultItems = [item1. item2];
+const defaultItems = [item1, item2];
 
 Item.insertMany(defaultItems, function(err){
   if (err) {
@@ -43,8 +43,10 @@ Item.insertMany(defaultItems, function(err){
 
 app.get("/", function(req, res) {
 
+  Item.find({}, function(err, foundItems){
+      res.render("list", {listTitle: "Today",newListItems: foundItems});
+  });
 
-  res.render("list", {listTitle: "Today",newListItems: items});
 
 });
 
