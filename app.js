@@ -9,6 +9,7 @@ const app = express();
 
 
 let workItems = [];
+let items = [];
 
 
 
@@ -44,7 +45,7 @@ Item.insertMany(defaultItems, function(err){
 app.get("/", function(req, res) {
 
   Item.find({}, function(err, foundItems){
-      res.render("list", {listTitle: "Today",newListItems: foundItems});
+      res.render("list", {listTitle: "Today",newListItems: items});
   });
 
 
